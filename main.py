@@ -398,15 +398,24 @@ def create_post(message):
     and msg.from_user.id == ADMIN_ID
 )
 def handle_new_job_post(message):
-  try:
-    data = [item.strip() for item in message.text.split("|")]
+ data = [item.strip() for item in message.text.split("|")]
     if len(data) < 6:
-      bot.reply_to(
-          message,
-          "❌ Format noto'g'ri! Ma'lumotlarni 6 ta qismga | belgisida ajratib yozing.",
-      )
-      return
-post_id = str(int(time.time()))[-4:]
+        bot.reply_to(
+            message,
+            "❌ Format noto'g'ri! Ma'lumotlarni 6 ta qismga | belgisida ajratib yozing.",
+        )
+        return
+
+    post_id = str(int(time.time()))[-4:]
+    posts_db[post_id] = {
+        "ish_haqqi": data[0],
+        "ovqat": data[1],
+        "vaqt": data[2],
+        "manzil": data[3],
+        "qoshimcha": data[4],
+        "phone": data[5],
+    }
+    save_data("posts.json", posts_db)
     posts_db[post_id] = {
         "ish_haqqi": data[0],
         "ovqat": data[1],
