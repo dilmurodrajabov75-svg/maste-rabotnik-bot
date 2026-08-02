@@ -416,15 +416,6 @@ def handle_new_job_post(message):
         "phone": data[5],
     }
     save_data("posts.json", posts_db)
-    posts_db[post_id] = {
-        "ish_haqqi": data[0],
-        "ovqat": data[1],
-        "vaqt": data[2],
-        "manzil": data[3],
-        "qoshimcha": data[4],
-        "phone": data[5],
-    }
-    save_data("posts.json", posts_db)
 
     caption = (
         f"👷‍♂️ Ishchilar kanali\n\n💰 Ish haqqi: {data[0]} so'm\n"
