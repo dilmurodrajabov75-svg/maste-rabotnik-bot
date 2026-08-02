@@ -435,9 +435,6 @@ def handle_new_job_post(message):
         CHANNEL_ID, caption, reply_markup=keyboard, parse_mode="Markdown"
     )
     bot.reply_to(message, f"✅ E'lon {CHANNEL_ID} ga joylandi! (ID: #{post_id})")
-  except Exception as e:
-    bot.reply_to(message, f"❌ Xatolik yuz berdi: {e}")
-
 
 print("Master_rabotnikbot muvaffaqiyatli ishga tushdi!")
 bot.polling(non_stop=True)
